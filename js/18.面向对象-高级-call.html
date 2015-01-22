@@ -1,0 +1,24 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<script>
+function callTest(){
+	alert(this);
+}
+callTest();        //简写
+callTest.call(12); //这是写全了的函数调用,还有一个特点,将对象传入做为当前对象
+
+
+function callTest2(a,b){
+	alert("this="+this+"\na="+a+"\nb="+b);
+}
+callTest2(12,5);
+callTest2.call('dfsdf');  //默认将第一个参数做为this
+callTest2.call('这是this',12);//第一参数是this,第二参数是12,第三参数为undefined
+callTest2.call('这是this',12,5);//正常传参数
+
+</script>
+</body>
+</html>

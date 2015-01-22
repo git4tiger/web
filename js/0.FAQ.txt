@@ -1,0 +1,25 @@
+1.javascript何时执行?
+  答: 加载时解释执行.
+  
+2.javascript有命名规范吗?
+  答: 基本上每一种语言都会有
+      javascript命名规范采用匈牙利命名,还有首字母大写
+	  -------------------------------------------------
+	  类型			前缀	类型		实例
+	  数组			 a		Array		 aItems
+	  布尔值		 b		Boolean		 bIsComplete
+	  函数			 f		Float		 fPrice
+	  整数			 i		Integer 	 iItemCount
+	  对象			 o		Object		 oDiv1
+	  正则表达式	 re		RegExp		 reEmailCheck
+	  字符串		 s		String		 sUserName
+	  变体变量		 v		Variant		 vAnything
+	  
+  
+3.如果想等html全部加载后再执行javascript,如何做?
+  答: 
+     [1].可以把js写在最后
+	 [2].
+	     window.onload=function(){
+			alert("dom加载完后才执行");
+		 }

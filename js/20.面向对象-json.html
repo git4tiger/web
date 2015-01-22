@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<script>
+
+var json={
+	name:"卢益志",
+	qq:"2343221443",
+	showName:function(){
+		alert(this.name);
+	},
+	showQQ:function(){
+		alert(this.qq);
+	}
+}
+
+json.showName();
+json.showQQ();
+
+var json2={
+	name:"张三",
+	qq:"234322212",
+	showName:function(){
+		alert(this.name);
+	},
+	showQQ:function(){
+		alert(this.qq);
+	}
+}
+
+json2.showName();
+json2.showQQ();
+
+
+/**
+*用json实现的对象,不适合多个对象，只适合单个对象,又叫"单体"
+*如果用工厂方式来创建json对象,那么又回到了原来的问题(没有new,方法重复)
+*所以，json实现对象的特点:整个程序只有一个
+*/
+
+</script>
+</body>
+</html>

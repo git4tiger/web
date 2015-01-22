@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<script>
+	/**
+	*
+	*变量作用域
+	*
+	*/
+	var s_global='s_global';
+	function test(){
+		var s_local='s_local';
+		s2_global='s2_global';
+		
+		alert(s_global);
+	}
+	
+	test();
+	alert(s_global);
+	alert(s2_global);
+	//alert(s_local);
+	
+	/*
+	*
+	*闭包:子函数可以使用父函数定义的局部变量
+	*
+	*/
+	
+	function close_backage_father(){
+	
+		var s_father="s_father";
+		function close_package_child(){
+			alert(s_father);
+		}
+		close_package_child();
+	}
+	
+	close_backage_father();
+
+</script>
+</body>
+</html>

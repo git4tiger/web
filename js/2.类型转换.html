@@ -1,0 +1,28 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+</head>
+</html>
+<script type="text/javascript">
+	/**
+	*
+	*字符串转数字(显示转换)
+	*/
+	alert("parseInt(12) -- "+parseInt('12'));  //12
+	alert("parseInt('12ccc34') -- "+parseInt('12ccc34'));  //12
+	alert("parseInt('a') -- "+parseInt('a'));  //NaN (Not a Number)
+	alert("parseInt('35')+parseInt('dd') -- "+parseInt('35')+parseInt('dd')); //NaN
+	alert("'字符串'+parseInt('dd') -- "+'字符串'+parseInt('dd')); //NaN
+	alert("parseInt('a')==parseInt('b') -- "+(parseInt('a')==parseInt('b')));//false Nan是不相等的
+	alert("isNan(parseInt('a')) --"+(isNaN(parseInt('a')))) //判断是不是数字
+	alert("字符串+true -- "+true);
+	
+	/**
+	*
+	*隐式转换
+	*/
+	alert("5+'5' = "+(5+'5'));  //加号在js中有两种功能: 1.字符串连接(1步),2.数字相加(2步),计算机会优先采用步数少的
+	alert("5-'2' = "+(5-'2'));  //减号在js中只有一种功能:数字相减
+	alert("5=='5' = "+(5=='5')) //先转换再比较
+	alert("5==='5' = "+(5==='5'));//全等,不转换直接比
+</script>

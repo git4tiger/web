@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<script>
+function A(){
+	this.name="卢益志";
+}
+A.prototype.show=function(){
+	alert(this.name);
+}
+
+//继承A
+function B(){
+	A.call(this); //此时this相当于 new B(),然后传进去
+}
+//B.prototype=A.prototype;  //这里是引用传递,有个缺点:修改B.prototype将会修改到A
+
+for(var i in A.prototype){
+	B.prototype[i]=A.prototype[i];
+}
+
+
+
+B.prototype.fn=function(){
+	alert("B.fn method");
+}
+var b=new B();
+alert(b.name);
+b.show();
+b.fn();
+
+var a=new A();
+a.fn();   //造成a也有了fn方法
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

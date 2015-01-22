@@ -1,0 +1,204 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<script>
+
+/**
+*
+*1.对象组成(属性,事件)
+*
+*/
+var arr=[1,2,3,4,5,6];
+arr.a='luyizhi';  //对象可以任意加属性
+                  //属性是属于对象的，变量是无主的
+arr.sum=function(){
+	var sum=0;
+	for(var i=0;i<arr.length;i++){
+		sum+=arr[i];
+	}
+	return sum;
+}
+alert(arr.a);
+alert(arr.sum());
+alert(arr.length);
+alert(window.arr);
+
+
+
+/**
+*
+*2.this(当前对象)
+*
+*/
+alert(this);
+alert(this.arr.sum());
+
+window.show=function(){
+	alert("window.show");
+}
+function show(){
+	alert("window.show");
+}
+//以上两个写法是一样的
+
+
+
+
+/**
+*
+*3.创建对象,使用Object
+*  因为它是空白的,就像我们画画,找一张白纸画,不会在报纸上画.可以避免冲突
+*
+*/
+var person=new Object();
+person.name="卢益志";
+person.qq="307268424";
+person.showName=function(){
+	alert("我的名字: "+this.name);
+}
+person.showQQ=function(){
+	alert("我的QQ: "+this.qq);
+}
+person.showName();
+person.showQQ();
+
+
+
+/**
+*
+*4.创建多个对象,这种方式产生了代码太长，无法重用.
+*
+*/
+
+var person1=new Object();
+person1.name="卢益志";
+person1.qq="307268424";
+person1.showName=function(){
+	alert("我的名字: "+this.name);
+}
+person1.showQQ=function(){
+	alert("我的QQ: "+this.qq);
+}
+person1.showName();
+person1.showQQ();
+
+var person2=new Object();
+person2.name="张三";
+person2.qq="23433343";
+person2.showName=function(){
+	alert("我的名字: "+this.name);
+}
+person2.showQQ=function(){
+	alert("我的QQ: "+this.qq);
+}
+person2.showName();
+person2.showQQ();
+
+var person3=new Object();
+person3.name="李四";
+person3.qq="4534534345";
+person3.showName=function(){
+	alert("我的名字: "+this.name);
+}
+person3.showQQ=function(){
+	alert("我的QQ: "+this.qq);
+}
+person3.showName();
+person3.showQQ();
+
+
+
+/**
+* 5.创建对象,可以重用(工厂方式)
+*/
+
+
+function createPerson(name,qq){  //构造函数(其实它和一般函数没有什么不同，只不过功能是创建对象,所以叫做构造函数)
+	
+	//原料
+	var o=new Object();
+	
+	//加工
+	o.name=name;
+	o.qq=qq;
+	o.showName=function(){
+		alert("我的名字: "+o.name);
+	}
+	o.showQQ=function(){
+		alert("我的QQ: "+o.qq);
+	}
+	
+	//出厂
+	return o;
+}
+var person4=createPerson("工厂方式创建 4","23432433423");
+var person5=createPerson("工厂方式创建 5","23432433423");
+person4.showName();
+person5.showName();
+alert("工厂方式创建的方法属性是不是同一个:"+(person4.showName==person5.showName));//比较地址
+
+/*
+* 6-1.由于5的方式有两个缺点,没有new关键字,方法属性每个对象都有一个,造成浪费
+* 函数和new
+*/
+function newTest(){
+	alert(this);
+}
+alert(this);  //window
+newTest();   //window 
+new newTest();//object,说明在方法前加new,系统会在方法内创建一个对象,并且返回
+
+
+/*
+* 6-2.由于5的方式有两个缺点,没有new关键字,方法属性每个对象都有一个,造成浪费
+* 加上new
+*/
+function newPerson(name,qq){
+	//var o=new Object();系统帮做
+	this.name=name;
+	this.qq=qq;
+	this.showName=function(){
+		alert("我的名字: "+this.name);
+	}
+	this.showQQ=function(){
+		alert("我的QQ: "+this.qq);
+	}
+	//return o;系统帮做
+}
+var person6=new newPerson("new 出来的对象 6",",哈哈");
+var person7=new newPerson("new 出来的对象 7",",哈哈");
+person6.showName();
+person7.showName();
+
+
+/*
+* 6-3.由于5的方式有两个缺点,没有new关键字,方法属性每个对象都有一个,造成浪费
+* 加上 原型 prototype
+*/
+function NewPerson2(name,qq){  //此时相当于类
+	//var o=new Object();系统帮做
+	this.name=name;
+	this.qq=qq;
+	//return o;系统帮做
+}
+
+NewPerson2.prototype.showName=function(){
+	alert("我的名字: "+this.name);
+}
+NewPerson2.prototype.showQQ=function(){
+	alert("我的QQ: "+this.qq);
+}
+var person8=new NewPerson2("new 出来的对象 8",",哈哈");
+var person9=new NewPerson2("new 出来的对象 9",",哈哈");
+person8.showName();
+person9.showName();
+alert("使用原型后方法相同:"+(person8.showName==person9.showName));
+
+/**
+*所以,构造函数里面加属性,原型里加方法
+*/
+</script>
+</body>
+</html>
